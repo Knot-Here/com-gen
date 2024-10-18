@@ -13,7 +13,10 @@ LAMBDA_FUNCTION_NAME=$(get_input "Enter the Lambda function name")
 ECR_REPO_NAME=$(get_input "Enter the ECR repo name")
 IMAGE_TAG=$(get_input "Enter the Docker image tag (e.g., latest)")
 DOCKERFILE_PATH=$(get_input "Enter the path to your Dockerfile (default: .)")
-LAMBDA_ROLE_ARN=$(get_input "Enter the Lambda execution role ARN")
+LAMBDA_ROLE_NAME=$(get_input "Enter the Lambda execution role name (e.g., lambda-role)")
+
+# Construct the Lambda Role ARN using the account ID and role name
+LAMBDA_ROLE_ARN="arn:aws:iam::${ACCOUNT_ID}:role/${LAMBDA_ROLE_NAME}"
 
 # Default values if not provided
 DOCKERFILE_PATH=${DOCKERFILE_PATH:-"."}

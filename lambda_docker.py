@@ -9,10 +9,13 @@ lambda_function_name = get_input("Enter the Lambda function name: ")
 ecr_repo_name = get_input("Enter the ECR repo name: ")
 image_tag = get_input("Enter the Docker image tag (e.g., latest): ")
 dockerfile_path = get_input("Enter the path to your Dockerfile (default: .): ")
-lambda_role_arn = get_input("Enter the Lambda execution role ARN: ")
+lambda_role_name = get_input("Enter the Lambda execution role name (e.g., lambda-role): ")
 
 # Default values if not provided
 dockerfile_path = dockerfile_path or "."
+
+# Construct the Lambda Role ARN using the account ID and role name
+lambda_role_arn = f"arn:aws:iam::{account_id}:role/{lambda_role_name}"
 
 print("\n# Generated Commands\n")
 
